@@ -1,8 +1,7 @@
-package com.school.controller;
+package com.school.modules.user.controller;
 
-import com.school.model.Student;
-import com.school.repository.StudentRepository;
-import com.school.services.UserService;
+import com.school.modules.student.model.Student;
+import com.school.modules.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

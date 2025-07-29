@@ -1,7 +1,7 @@
-package com.school.services;
+package com.school.modules.user.service;
 
-import com.school.model.Student;
-import com.school.repository.StudentRepository;
+import com.school.modules.student.model.Student;
+import com.school.modules.student.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

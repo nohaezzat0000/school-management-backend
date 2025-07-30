@@ -1,4 +1,4 @@
-package com.school.model;
+package com.school.modules.student.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

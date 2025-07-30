@@ -34,7 +34,7 @@ public class Auth {
         this.jwtGenerator = jwtGenerator;
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", produces = "application/json")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto) {
         try {
             Authentication authentication = authenticationManager.authenticate(

@@ -1,6 +1,6 @@
-package com.school.controller;
+package com.school.modules.user.controller;
 
-import com.school.model.Student;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

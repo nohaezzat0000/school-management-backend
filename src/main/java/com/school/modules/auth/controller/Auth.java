@@ -1,8 +1,8 @@
-package com.school.controller;
+package com.school.modules.auth.controller;
 
 import com.school.Dto.AuthResponseDTO;
 import com.school.Dto.LoginDto;
-import com.school.repository.UserRepository;
+import com.school.modules.auth.repos.UserRepository;
 import com.school.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;

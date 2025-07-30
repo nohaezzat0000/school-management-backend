@@ -1,8 +1,9 @@
 package com.school.security;
 
-import com.school.services.CustomUserDetailsService;
+
 import java.io.IOException;
 
+import com.school.modules.auth.service.impl.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

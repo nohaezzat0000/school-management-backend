@@ -1,4 +1,4 @@
-package com.school.modules.user.model;
+package com.school.modules.auth.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

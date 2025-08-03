@@ -1,5 +1,6 @@
 package com.school.modules.auth.service.impl;
 
+import com.school.modules.auth.enums.Role;
 import com.school.modules.auth.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,7 +33,7 @@ public class UserPrincipal implements UserDetails {
     public String getLastName() { return user.getLastName(); }
     public String getEmail() { return user.getEmail(); }
     public String getPhoneNumber() { return user.getPhoneNumber(); }
-    public String getRole() { return user.getRole(); }
+    public Role getRole() { return user.getRole(); }
 
 
 

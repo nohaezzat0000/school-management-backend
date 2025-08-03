@@ -8,9 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SchoolManagementApplication {
 
 	public static void main(String[] args) {
-		System.out.println("يبيليلل");
+		System.out.println("encode");
 		System.out.println(new BCryptPasswordEncoder().encode("admin123"));
-		System.out.println("لبيليبلبيل");
 		boolean matches = new BCryptPasswordEncoder().matches("admin123", "");
 		System.out.println("Matches: " + matches);
 		SpringApplication.run(SchoolManagementApplication.class, args);

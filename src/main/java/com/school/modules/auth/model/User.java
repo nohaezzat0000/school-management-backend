@@ -18,6 +18,4 @@ public class User {
     private String Email;
     private String phoneNumber;
 
-
-
 }

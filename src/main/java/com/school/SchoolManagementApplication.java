@@ -11,7 +11,7 @@ public class SchoolManagementApplication {
 		System.out.println("يبيليلل");
 		System.out.println(new BCryptPasswordEncoder().encode("admin123"));
 		System.out.println("لبيليبلبيل");
-		boolean matches = new BCryptPasswordEncoder().matches("admin123", "$2a$10$TqYNq8rH5dvgVsJ9.F0xLuVZDEo.rVk66rm4O/v67xVHNMvW1q1PO");
+		boolean matches = new BCryptPasswordEncoder().matches("admin123", "");
 		System.out.println("Matches: " + matches);
 		SpringApplication.run(SchoolManagementApplication.class, args);
 	}

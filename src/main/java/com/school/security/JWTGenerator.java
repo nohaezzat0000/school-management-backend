@@ -1,6 +1,6 @@
 package com.school.security;
 
-import com.school.modules.auth.service.impl.UserPrincipal;
+import com.school.modules.auth.service.impl.AppUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,19 +17,19 @@ public class JWTGenerator {
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     public String generateToken(Authentication authentication) {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        AppUserDetails appUserDetails = (AppUserDetails) authentication.getPrincipal();
 
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + SecurityConstants.JWT_EXPIRATION);
 
         String token = Jwts.builder()
-                .setSubject(userPrincipal.getUsername())
-                .claim("userId", userPrincipal.getId())
-                .claim("firstName", userPrincipal.getFirstName())
-                .claim("lastName", userPrincipal.getLastName())
-                .claim("email", userPrincipal.getEmail())
-                .claim("phoneNumber", userPrincipal.getPhoneNumber())
-                .claim("role", userPrincipal.getRole())
+                .setSubject(appUserDetails.getUsername())
+                .claim("userId", appUserDetails.getId())
+                .claim("firstName", appUserDetails.getFirstName())
+                .claim("lastName", appUserDetails.getLastName())
+                .claim("email", appUserDetails.getEmail())
+                .claim("phoneNumber", appUserDetails.getPhoneNumber())
+                .claim("role", appUserDetails.getRole())
                 .setIssuedAt(currentDate)
                 .setExpiration(expireDate)
                 .signWith(key, SignatureAlgorithm.HS512)

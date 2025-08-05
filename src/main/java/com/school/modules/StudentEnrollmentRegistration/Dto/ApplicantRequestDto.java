@@ -23,7 +23,6 @@ public class ApplicantRequestDto {
     private String passportNumber;
 
     @NotNull(message = "Birth date is required")
-    @Size(max = 6)
     private LocalDate birthDate;
 
     @NotBlank(message = "Gender is required")

@@ -4,17 +4,21 @@ import com.school.modules.StudentEnrollmentRegistration.Dto.ApplicantRequestDto;
 import com.school.modules.StudentEnrollmentRegistration.mapper.ApplicantMapper;
 import com.school.modules.StudentEnrollmentRegistration.model.Applicant;
 import com.school.modules.StudentEnrollmentRegistration.repository.ApplicantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class ApplicantServiceImpl implements ApplicantService {
 
-    @Autowired
-    private ApplicantRepository applicantRepository;
-    @Autowired
-    private ApplicantMapper applicantMapper;
+    private final ApplicantRepository applicantRepository;
+
+    private final ApplicantMapper applicantMapper;
+
+    public ApplicantServiceImpl(ApplicantRepository applicantRepository,
+                                ApplicantMapper applicantMapper) {
+        this.applicantRepository = applicantRepository;
+       this.applicantMapper = applicantMapper;
+    }
+
 
     @Override
     public Applicant registerApplicant(ApplicantRequestDto dto) {
@@ -23,6 +27,6 @@ public class ApplicantServiceImpl implements ApplicantService {
         }
 
         Applicant applicant = applicantMapper.toEntity(dto);
-        return applicantRepository.save(applicant);
+        return null;
     }
 }

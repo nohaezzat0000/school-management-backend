@@ -1,5 +1,6 @@
 package com.school.modules.StudentEnrollmentRegistration.model;
 
+import com.school.modules.appCommon.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @Table(name = "students")
-public class Student {
+public class Student extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

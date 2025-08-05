@@ -1,6 +1,7 @@
 package com.school.modules.StudentEnrollmentRegistration.model;
 
 import com.school.modules.appCommon.attchment.model.GenericAppAttachment;
+import com.school.modules.appCommon.domain.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "applicants")
-public class Applicant {
+public class Applicant extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

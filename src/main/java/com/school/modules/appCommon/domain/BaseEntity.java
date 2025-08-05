@@ -20,31 +20,31 @@ import java.time.LocalDateTime;
 @Slf4j
 public class BaseEntity implements Serializable {
 
-    @Column(name = "is_deleted", nullable = false)
+    @Column(name = "is_deleted")
     private Boolean isDeleted;
 
-    @Column(name = "created_by", nullable = false, updatable = false)
+    @Column(name = "created_by")
     @CreatedBy
     private Long createdBy;
 
-    @Column(name = "created_in", nullable = false, updatable = false)
+    @Column(name = "created_in")
     @CreationTimestamp
     private LocalDateTime createdIn;
 
 
-    @Column(name = "is_enabled", nullable = false)
+    @Column(name = "is_enabled")
     private Boolean isEnabled;
 
     @Size(max = 500)
     @Column(name = "comments")
     private String comment;
 
-    @Column(name = "last_updated_by", nullable = false)
+    @Column(name = "last_updated_by")
     @LastModifiedBy
     private Long lastUpdatedBy;
 
 
-    @Column(name = "last_updated_in", nullable = false)
+    @Column(name = "last_updated_in")
     @UpdateTimestamp
     private LocalDateTime lastUpdatedIn;
 

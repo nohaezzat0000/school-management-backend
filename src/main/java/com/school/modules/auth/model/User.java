@@ -1,5 +1,6 @@
 package com.school.modules.auth.model;
 
+import com.school.modules.appCommon.domain.BaseEntity;
 import com.school.modules.auth.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

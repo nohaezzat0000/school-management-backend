@@ -31,7 +31,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private static final List<String> EXCLUDED_PATHS = Arrays.asList(
             "/auth/login",
             "/auth/signup",
-            "/auth/register" // Add any other public endpoints
+            "/auth/register",
+            "/applicants/enroll"
+            // Add any other public endpoints
     );
 
     @Override

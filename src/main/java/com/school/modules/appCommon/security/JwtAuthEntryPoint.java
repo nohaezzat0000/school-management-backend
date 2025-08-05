@@ -1,4 +1,4 @@
-package com.school.security;
+package com.school.modules.appCommon.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

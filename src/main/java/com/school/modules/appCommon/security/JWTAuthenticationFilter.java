@@ -1,4 +1,4 @@
-package com.school.security;
+package com.school.modules.appCommon.security;
 
 import java.io.IOException;
 import java.util.Arrays;

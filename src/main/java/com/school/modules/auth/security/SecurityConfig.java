@@ -1,8 +1,8 @@
 package com.school.modules.auth.security;
 
 import com.school.modules.auth.service.impl.CustomUserDetailsService;
-import com.school.security.JWTAuthenticationFilter;
-import com.school.security.JwtAuthEntryPoint;
+import com.school.modules.appCommon.security.JWTAuthenticationFilter;
+import com.school.modules.appCommon.security.JwtAuthEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

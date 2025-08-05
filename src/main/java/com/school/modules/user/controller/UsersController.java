@@ -1,17 +1,12 @@
 package com.school.modules.user.controller;
 
-import com.school.modules.auth.model.User;
 import com.school.modules.user.dto.UserProfileDto;
 import com.school.modules.user.service.UserService;
-import com.school.security.JWTGenerator;
+import com.school.modules.appCommon.security.JWTGenerator;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

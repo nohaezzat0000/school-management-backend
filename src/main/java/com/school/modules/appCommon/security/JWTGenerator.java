@@ -1,4 +1,4 @@
-package com.school.security;
+package com.school.modules.appCommon.security;
 
 import com.school.modules.auth.service.impl.AppUserDetails;
 import io.jsonwebtoken.Claims;

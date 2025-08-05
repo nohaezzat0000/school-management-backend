@@ -7,7 +7,7 @@ import com.school.modules.auth.dto.SignUpRequestDTO;
 import com.school.modules.auth.dto.UserResponseDTO;
 import com.school.modules.auth.model.User;
 import com.school.modules.auth.repos.UserRepository;
-import com.school.security.JWTGenerator;
+import com.school.modules.appCommon.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.http.HttpStatus;

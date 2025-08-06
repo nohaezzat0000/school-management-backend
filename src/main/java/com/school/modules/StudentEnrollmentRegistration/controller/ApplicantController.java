@@ -17,12 +17,6 @@ public class ApplicantController {
     @Autowired
     private ApplicantService applicantService;
 
-    @PostMapping("/enroll")
-    public ResponseEntity<Applicant> registerApplicant(@Valid @RequestBody ApplicantRequestDto requestDto) {
-        Applicant applicant = applicantService.registerApplicant(requestDto);
-        return ResponseEntity.ok(applicant);
-    }
-
     @GetMapping("/enrollments")
     public ResponseEntity<List<Applicant>> getApplicants() {
         return ResponseEntity.ok(applicantService.getAllApplicants());

@@ -5,12 +5,22 @@ import com.school.modules.auth.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import org.springframework.data.domain.Auditable;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

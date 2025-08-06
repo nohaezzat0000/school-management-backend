@@ -51,7 +51,8 @@ public class ApplicantServiceImpl implements ApplicantService {
                 .orElseThrow(() -> new RuntimeException("Applicatns not found with ID: "+ id));
         applicant.setStatus(ApplicationStatus.ACCEPTED);
         applicant.setUpdatedAt(LocalDateTime.now());
-        return applicantRepository.save(applicant);    }
+        return applicantRepository.save(applicant);
+    }
 
     @Override
     public Applicant rejectApplicantById(Long id) {

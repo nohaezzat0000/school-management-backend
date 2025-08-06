@@ -1,7 +1,6 @@
 package com.school.modules.appCommon.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,10 +9,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
 @Setter
@@ -31,7 +32,6 @@ public class BaseEntity implements Serializable {
     @CreationTimestamp
     private LocalDateTime createdIn;
 
-
     @Column(name = "is_enabled")
     private Boolean isEnabled;
 
@@ -48,6 +48,28 @@ public class BaseEntity implements Serializable {
     @UpdateTimestamp
     private LocalDateTime lastUpdatedIn;
 
+    @PrePersist
+    public void preInsertDefaultColumns() {
 
+        if (this.getIsEnabled() == null) {
+            this.setIsEnabled(true);
+        }
+        if (this.getIsDeleted() == null) {
+            this.setIsDeleted(false);
+        }
+
+    }
+
+    @PreUpdate
+    public void preUpdateDefaultColumns() {
+
+        if (this.getIsEnabled() == null) {
+            this.setIsEnabled(true);
+        }
+        if (this.getIsDeleted() == null) {
+            this.setIsDeleted(false);
+        }
+
+    }
 
 }

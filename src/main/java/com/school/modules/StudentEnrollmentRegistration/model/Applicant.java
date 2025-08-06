@@ -6,13 +6,17 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import com.school.modules.StudentEnrollmentRegistration.enums.ApplicationStatus;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "applicants")
-public class Applicant extends BaseEntity {
+public class Applicant extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -163,9 +167,12 @@ public class Applicant extends BaseEntity {
     // Timestamps
     @NotNull
     @Column(name = "created_at", nullable = false)
+    @CreatedDate
     private LocalDateTime createdAt;
+
     @NotNull
     @Column(name = "updated_at", nullable = false)
+    @LastModifiedDate
     private LocalDateTime updatedAt;
 
     @Column(name = "att_id")

@@ -32,13 +32,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             "/auth/login",
             "/auth/signup",
             "/auth/register",
-            "/applicants/enroll",
-            "/api/grades",
-            "/api/grades/",
-            "/api/grades/**",
-            "/api/classrooms",
-            "/api/classrooms/",
-            "/api/classrooms/**"
+            "/applicants/enroll"
             // Add any other public endpoints
     );
 

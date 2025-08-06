@@ -7,6 +7,8 @@ import com.school.modules.GradesAndClasses.Repositories.GradeRepository;
 import com.school.modules.GradesAndClasses.Services.GradeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class GradeServiceImpl implements GradeService {
         this.gradeRepository = gradeRepository;
     }
 
+    @CacheEvict(value = "allGrades", allEntries = true)
     @Override
     public GradeDTO createGrade(GradeDTO dto) {
         Grade grade = GradeMapper.toEntity(dto);
@@ -28,6 +31,7 @@ public class GradeServiceImpl implements GradeService {
         return GradeMapper.toDTO(saved);
     }
 
+    @Cacheable(value = "grades", key = "#id")
     @Override
     public GradeDTO getGradeById(Long id){
         Grade grade = gradeRepository.findById(id)
@@ -36,6 +40,7 @@ public class GradeServiceImpl implements GradeService {
         return GradeMapper.toDTO(grade);
     }
 
+    @Cacheable(value = "allGrades")
     @Override
     public List<GradeDTO> getAllGrades() {
         return gradeRepository.findAll().stream()
@@ -43,6 +48,7 @@ public class GradeServiceImpl implements GradeService {
                 .collect(Collectors.toList());
     }
 
+    @CacheEvict(value = "grades", key = "#id")
     @Override
     public GradeDTO updateGrade(Long id, GradeDTO dto) {
         Grade grade = gradeRepository.findById(id)
@@ -57,6 +63,7 @@ public class GradeServiceImpl implements GradeService {
         return GradeMapper.toDTO(updated);
     }
 
+    @CacheEvict(value = "grades", key = "#id")
     @Override
     public void deleteGrade(Long id) {
         if (!gradeRepository.existsById(id)) {

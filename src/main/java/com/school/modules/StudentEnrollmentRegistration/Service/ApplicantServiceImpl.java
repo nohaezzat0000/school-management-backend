@@ -5,6 +5,7 @@ import com.school.modules.StudentEnrollmentRegistration.enums.ApplicationStatus;
 import com.school.modules.StudentEnrollmentRegistration.mapper.ApplicantMapper;
 import com.school.modules.StudentEnrollmentRegistration.model.Applicant;
 import com.school.modules.StudentEnrollmentRegistration.repository.ApplicantRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

@@ -6,17 +6,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import com.school.modules.StudentEnrollmentRegistration.enums.ApplicationStatus;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.school.modules.StudentEnrollmentRegistration.enums.Specialization;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-@Entity
 @Data
+@Entity
 @Table(name = "applicants")
-public class Applicant extends BaseEntity{
+public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +26,14 @@ public class Applicant extends BaseEntity{
     private String fullNameAr;
 
     @NotNull
-    @Size(max = 255)
-    @Column(name = "full_name_en", nullable = false, length = 255)
-    private String fullNameEn;
-
-    @NotNull
     @Size(max = 20)
     @Column(name = "national_id", nullable = false, unique = true, length = 20)
     private String nationalId;
+
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "full_name_en", nullable = false, length = 255)
+    private String fullNameEn;
 
     @Size(max = 20)
     @Column(name = "passport_number", length = 20)
@@ -141,39 +139,21 @@ public class Applicant extends BaseEntity{
     private String extraCertificatesUrl;
 
 
-    @NotNull
-    @Size(max = 100)
-    @Column(name = "branch_choice", nullable = false, length = 100)
-    private String branchChoice;
-    @NotNull
-    @Size(max = 100)
-    @Column(name = "specialization_choice", nullable = false, length = 100)
-    private String specializationChoice;
+    //@NotNull
+   // @Enumerated(EnumType.STRING)
+   // @Column(name = "specialization_choice", nullable = false, length = 100)
+    //private Specialization specializationChoice;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
     private ApplicationStatus status; // PENDING, VERIFIED, REJECTED, ACCEPTED
 
-    @NotNull
-    @Column(name = "application_date", nullable = false)
-    private LocalDateTime applicationDate;
 
-
-    // Optional: track who reviewed the application
     @Size(max = 255)
     @Column(name = "reviewed_by", length = 255)
     private String reviewedBy;
 
-    // Timestamps
-    @NotNull
-    @Column(name = "created_at", nullable = false)
-    @CreatedDate
-    private LocalDateTime createdAt;
 
-    @NotNull
-    @Column(name = "updated_at", nullable = false)
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 
     @Column(name = "att_id")
     private Long commRegisterAttId;

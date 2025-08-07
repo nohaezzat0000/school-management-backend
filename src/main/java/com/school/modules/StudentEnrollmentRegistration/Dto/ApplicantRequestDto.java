@@ -6,7 +6,6 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-
 public class ApplicantRequestDto {
 
     @NotBlank(message = "Full name in Arabic is required")
@@ -31,7 +30,11 @@ public class ApplicantRequestDto {
     @NotBlank(message = "Nationality is required")
     private String nationality;
 
+    @NotBlank(message = "Religion is required")
     private String religion;
+
+    @NotBlank(message = "Place of birth is required")
+
     private String placeOfBirth;
 
     @NotBlank(message = "Phone number is required")
@@ -81,21 +84,23 @@ public class ApplicantRequestDto {
 
     @NotBlank(message = "Personal photo URL is required")
     private String personalPhotoUrl;
+
     @NotBlank(message = "Certificate URL is required")
     @Size(max = 500)
     private String certificateUrl;
+
     @NotBlank(message = "Birth certificate URL is required")
     @Size(max = 500)
     private String birthCertificateUrl;
     @NotBlank(message = "Guardian ID URL is required")
+
     @Size(max = 500)
     private String guardianIdUrl;
+
     @Size(max = 500)
     private String extraCertificatesUrl;
-    @NotBlank(message = "Branch choice is required")
-    private String branchChoice;
-    @NotBlank(message = "Specialization choice is required")
 
-    private String specializationChoice;
+   // @NotNull(message = "Specialization choice is required")
+    //private Specialization specializationChoice;
 
 }

@@ -1,14 +1,15 @@
 package com.school.modules.StudentEnrollmentRegistration.Service;
 
-import com.school.modules.StudentEnrollmentRegistration.Dto.ApplicantRequestDto;
-import com.school.modules.StudentEnrollmentRegistration.enums.ApplicationStatus;
-import com.school.modules.StudentEnrollmentRegistration.mapper.ApplicantMapper;
+import com.school.modules.StudentEnrollmentRegistration.Dto.request.ApplicantRequest;
+import com.school.modules.StudentEnrollmentRegistration.Dto.userDto;
+import com.school.modules.StudentEnrollmentRegistration.mapper.ApplicantEnrol;
 import com.school.modules.StudentEnrollmentRegistration.model.Applicant;
 import com.school.modules.StudentEnrollmentRegistration.repository.ApplicantRepository;
-import org.springframework.cache.annotation.Cacheable;
+import com.school.modules.auth.model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,22 +17,34 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     private final ApplicantRepository applicantRepository;
 
-    private final ApplicantMapper applicantMapper;
+    private final ApplicantEnrol applicantEnrol;
 
     public ApplicantServiceImpl(ApplicantRepository applicantRepository,
-                                ApplicantMapper applicantMapper) {
+                                ApplicantEnrol applicantEnrol) {
         this.applicantRepository = applicantRepository;
-       this.applicantMapper = applicantMapper;
+       this.applicantEnrol = applicantEnrol;
     }
 
 
     @Override
-    public Applicant registerApplicant(ApplicantRequestDto dto) {
+    @Transactional
+    public Applicant registerApplicant( ApplicantRequest dto) {
         if (applicantRepository.existsByNationalId(dto.getNationalId())) {
             throw new RuntimeException("Applicant with this National ID already exists.");
         }
 
-        Applicant applicant = applicantMapper.toEntity(dto);
+        userDto userDto = new userDto();
+        userDto.setUsername("testuser123");
+        userDto.setPassword("password123");
+        userDto.setFirstName("John");
+        userDto.setLastName("Doe");
+        userDto.setEmail("john.doe@example.com");
+        userDto.setDateOfBirth(LocalDate.of(1990, 5, 20));
+        userDto.setPhoneNumber("+1234567890");
+        // Map dto to Applicant entity
+        User applicant = applicantEnrol.toEntity(userDto);
+
+        // Save and return the new applicant
         return null;
     }
 
@@ -50,8 +63,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     public Applicant acceptApplicantById(Long id) {
         Applicant applicant = applicantRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Applicatns not found with ID: "+ id));
-        applicant.setStatus(ApplicationStatus.ACCEPTED);
-        applicant.setUpdatedAt(LocalDateTime.now());
+        //applicant.setStatus(ApplicationStatus.ACCEPTED);
+       // applicant.setUpdatedAt(LocalDateTime.now());
         return applicantRepository.save(applicant);
     }
 
@@ -59,8 +72,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     public Applicant rejectApplicantById(Long id) {
         Applicant applicant = applicantRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Applicatns not found with ID: "+ id));
-        applicant.setStatus(ApplicationStatus.REJECTED);
-        applicant.setUpdatedAt(LocalDateTime.now());
+        //applicant.setStatus(ApplicationStatus.REJECTED);
+        //applicant.setUpdatedAt(LocalDateTime.now());
         return applicantRepository.save(applicant);
     }
 }

@@ -1,29 +1,20 @@
-package com.school.modules.auth.model;
+package com.school.modules.StudentEnrollmentRegistration.Dto;
 
-import com.school.modules.auth.enums.Role;
-import jakarta.persistence.*;
+
 import lombok.Data;
 
 import java.time.LocalDate;
-
-@Entity
 @Data
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class userDto {
+
     private Long id;
 
     private String username;
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate dateOfBirth;
     private String phoneNumber;
-
 }

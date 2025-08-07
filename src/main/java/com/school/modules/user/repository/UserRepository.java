@@ -1,4 +1,4 @@
-package com.school.modules.auth.repos;
+package com.school.modules.user.repository;
 
 
 import com.school.modules.auth.model.User;
@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
+
 }

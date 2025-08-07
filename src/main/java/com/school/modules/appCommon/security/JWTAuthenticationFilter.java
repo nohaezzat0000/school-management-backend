@@ -41,7 +41,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        String requestPath = request.getServletPath();
+        //String requestPath = request.getServletPath();
+        String requestPath = request.getRequestURI();
 
         // Skip JWT processing for excluded paths
         if (shouldSkipAuthentication(requestPath)) {

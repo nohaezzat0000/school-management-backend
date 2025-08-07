@@ -2,16 +2,16 @@ package com.school.modules.user.service.Imp;
 
 import com.school.modules.user.dto.UserProfileDto;
 import com.school.modules.auth.model.User;
-import com.school.modules.user.repository.UserRepositoryP;
+import com.school.modules.user.repository.UserRepository;
 import com.school.modules.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepositoryP userRepository;
+    private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepositoryP userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

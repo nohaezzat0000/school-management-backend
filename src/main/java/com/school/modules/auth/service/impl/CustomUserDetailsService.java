@@ -2,7 +2,7 @@ package com.school.modules.auth.service.impl;
 
 
 import com.school.modules.auth.model.User;
-import com.school.modules.auth.repos.UserRepository;
+import com.school.modules.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

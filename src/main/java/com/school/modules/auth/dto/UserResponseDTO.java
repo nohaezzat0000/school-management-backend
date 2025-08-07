@@ -12,6 +12,4 @@ public class UserResponseDTO {
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
-
-
 }

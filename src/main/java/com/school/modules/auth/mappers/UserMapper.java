@@ -1,9 +1,10 @@
 package com.school.modules.auth.mappers;
 
-import com.school.modules.auth.dto.SignUpRequestDTO;
-import com.school.modules.auth.dto.UserResponseDTO;
+
 import com.school.modules.auth.enums.Role;
 import com.school.modules.auth.model.User;
+import com.school.modules.user.dto.SignUpRequestDTO;
+import com.school.modules.user.dto.UserResponseDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 

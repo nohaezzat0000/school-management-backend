@@ -1,6 +1,9 @@
 package com.school.modules.auth.controllers;
 
 import com.school.Dto.AuthResponseDTO;
+import com.school.modules.StudentEnrollmentRegistration.Dto.StudentDto;
+import com.school.modules.StudentEnrollmentRegistration.mapper.StudentMapper;
+import com.school.modules.StudentEnrollmentRegistration.model.Student;
 import com.school.modules.user.dto.LoginDto;
 import com.school.modules.auth.enums.Role;
 import com.school.modules.user.dto.SignUpRequestDTO;
@@ -28,28 +31,29 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
     private JWTGenerator jwtGenerator;
     private final UserMapper userMapper;
-
+    private final StudentMapper mapper;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                          PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator,  UserMapper userMapper) {
+                          PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator, UserMapper userMapper, StudentMapper mapper) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
         this.userMapper = userMapper;
 
+        this.mapper = mapper;
     }
 
     @PostMapping(value = "/login", produces = "application/json")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            String token = jwtGenerator.generateToken(authentication);
-            return ResponseEntity.ok(new AuthResponseDTO(token));
+            StudentDto student = new StudentDto();
+            student.setId(1L);
+            student.setName("Noha");
+            student.setAge(20);
+           Student student1= mapper.toEntity(student);
+            return null;
         } catch (AuthenticationException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

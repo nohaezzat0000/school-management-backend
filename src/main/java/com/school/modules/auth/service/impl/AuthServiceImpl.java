@@ -1,10 +1,11 @@
 package com.school.modules.auth.service.impl;
 
-import com.school.modules.auth.dto.SignUpRequestDTO;
-import com.school.modules.auth.dto.UserResponseDTO;
+
 import com.school.modules.auth.mappers.UserMapper;
 import com.school.modules.auth.model.User;
-import com.school.modules.auth.repos.UserRepository;
+import com.school.modules.user.dto.SignUpRequestDTO;
+import com.school.modules.user.dto.UserResponseDTO;
+import com.school.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

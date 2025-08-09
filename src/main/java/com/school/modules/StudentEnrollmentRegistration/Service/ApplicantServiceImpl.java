@@ -2,7 +2,6 @@ package com.school.modules.StudentEnrollmentRegistration.Service;
 
 import com.school.modules.StudentEnrollmentRegistration.Dto.request.ApplicantRequest;
 import com.school.modules.StudentEnrollmentRegistration.Dto.userDto;
-import com.school.modules.StudentEnrollmentRegistration.mapper.ApplicantEnrol;
 import com.school.modules.StudentEnrollmentRegistration.model.Applicant;
 import com.school.modules.StudentEnrollmentRegistration.repository.ApplicantRepository;
 import com.school.modules.auth.model.User;
@@ -17,12 +16,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     private final ApplicantRepository applicantRepository;
 
-    private final ApplicantEnrol applicantEnrol;
 
-    public ApplicantServiceImpl(ApplicantRepository applicantRepository,
-                                ApplicantEnrol applicantEnrol) {
+
+    public ApplicantServiceImpl(ApplicantRepository applicantRepository) {
         this.applicantRepository = applicantRepository;
-       this.applicantEnrol = applicantEnrol;
     }
 
 
@@ -42,7 +39,7 @@ public class ApplicantServiceImpl implements ApplicantService {
         userDto.setDateOfBirth(LocalDate.of(1990, 5, 20));
         userDto.setPhoneNumber("+1234567890");
         // Map dto to Applicant entity
-        User applicant = applicantEnrol.toEntity(userDto);
+//        User applicant = applicantEnrol.toEntity(userDto);
 
         // Save and return the new applicant
         return null;

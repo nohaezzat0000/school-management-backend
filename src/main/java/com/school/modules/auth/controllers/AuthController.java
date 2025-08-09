@@ -2,11 +2,8 @@ package com.school.modules.auth.controllers;
 
 import com.school.Dto.AuthResponseDTO;
 import com.school.modules.user.dto.LoginDto;
-import com.school.modules.auth.enums.Role;
 import com.school.modules.user.dto.SignUpRequestDTO;
 import com.school.modules.user.dto.UserResponseDTO;
-import com.school.modules.auth.model.User;
-import com.school.modules.user.mapper.UserMapper;
 import com.school.modules.user.repository.UserRepository;
 import com.school.modules.appCommon.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +24,17 @@ public class AuthController {
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private JWTGenerator jwtGenerator;
-    private final UserMapper userMapper;
+//    private final UserMapper userMapper;
 
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                          PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator,  UserMapper userMapper) {
+                          PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
-        this.userMapper = userMapper;
+//        this.userMapper = userMapper;
 
     }
 
@@ -96,20 +93,20 @@ public class AuthController {
         }
 
         // Map DTO to entity
-        User user = userMapper.toEntity(dto);
+//        User user = userMapper.toEntity(dto);
 
         // Encode password manually because mapper can't encode it
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+//        user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         // Force default role
-        user.setRole(Role.USER);
+//        user.setRole(Role.USER);
 
-        User saved = userRepository.save(user);
+//        User saved = userRepository.save(user);
         // Map entity to response DTO
-        UserResponseDTO response = userMapper.toDto(saved);
+//        UserResponseDTO response = userMapper.toDto(saved);
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-
+//        return new ResponseEntity<>(response, HttpStatus.CREATED);
+      return null;
 
     }
 

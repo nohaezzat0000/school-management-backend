@@ -10,7 +10,7 @@ import java.io.Serializable;
     @Data
     @Entity
     @Table(name = "attachements")
-    public class GenericAppAttachment extends BaseEntity implements Serializable {
+    public class GenericAppAttachment extends BaseEntity {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id
         @Column(name = "id", nullable = false)
